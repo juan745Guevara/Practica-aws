@@ -1,0 +1,8 @@
+# Llaves SSH y credenciales: NUNCA subirlas al repositorio
+*.pem
+*.ppk
+.env
+
+# Sistema
+.DS_Store
+Thumbs.db

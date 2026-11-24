@@ -1,0 +1,18 @@
+# Levanta la app en Docker leyendo los datos de RDS desde .env
+#   cp .env.example .env   (y completa DB_HOST, DB_USER, DB_PASS)
+#   docker compose up -d --build
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: lab-app
+    container_name: lab-app
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:80"
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME:-appdb}
